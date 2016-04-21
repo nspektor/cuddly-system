@@ -2,16 +2,11 @@
 
 //access canvas and buttons via DOM
 var c = document.getElementById("playground");
-var dotButton = document.getElementById( "circle" );
 var dvdButton = document.getElementById( "dvd" );
 var stopButton = document.getElementById( "stop" );
 
 //prepare to interact with canvas in 2D
 var ctx = c.getContext("2d");
-
-//set fill color to red
-ctx.fillStyle = "#ff0000";
-
 
 var requestID;
 
@@ -20,53 +15,19 @@ var clear = function(e) {
     ctx.clearRect(0, 0, 500, 500);
 };
 
-var radius = 0;
-var growing = true;
 
-
-var drawDot = function() {
-    
-    ctx.clearRect( 0, 0, c.width, c.height );
-
-    if ( growing ) {
-	radius = radius + 1;
-    }    
-    else {
-	radius = radius - 1;
-    }
-
-    if ( radius == (c.width / 2) )
-	growing = false;
-    else if ( radius == 0 ) {
-	growing = true;
-    }
-    
-    ctx.beginPath();
-    ctx.arc( c.width / 2, c.height / 2, radius, 0, 2 * Math.PI );
-    ctx.stroke();
-    ctx.fill();
-
-    requestID = window.requestAnimationFrame( drawDot );
-};
-
-
-
-var dvdLogoSetup = function() {
-    
-    //Q: What good might this do?
-    // Stops the previous animation
-    window.cancelAnimationFrame( requestID );
+var dvdLogoSetup = function(x0=1, y0=1, sizeX=90, sizeY=60) {
    
     //var inits
     var size = 500;
     var xcor = 1;
     var ycor = 1;
-    var dx = 1;
-    var dy = 1;
+    var dx = x0;
+    var dy = y0;
     var logo = new Image();
     logo.src = "logo_dvd.jpg"
-    var imageX = 90;
-    var imageY = 60;
+    var imageX = sizeX;
+    var imageY =sizeY;
     
     //a function defined within a function, oh my!
     // References this one instance of this function rather than calling the same function again when the button is pressed repeatedly 
@@ -100,7 +61,6 @@ var stopIt = function() {
 };
 
 
-dotButton.addEventListener( "click", drawDot );
 dvdButton.addEventListener( "click", dvdLogoSetup );
 stopButton.addEventListener( "click",  stopIt );
 
