@@ -1,23 +1,42 @@
-<!--
-Dillon Zhang
-SoftDev2 pd03
-HW03 -- Circle
-2016-02-22
-  -->
-
 <!DOCTYPE html>
 <html>
   <head>
-    <title> Animate </title>
+    <title>Cuddly-System</title>
   </head>
   
   <body>
-    <h1 style="text-align:center;"> Canvas </h1>
-    <canvas id="playground" height="500" width="500"> </canvas>
-    <button id="circle" type="button">Start</button>
-    <button id="dvd" type="button">DVD</button>
-    <button id="stop" type="button">Stop</button>
-    <button id="clear" type="button">Clear</button>
+    <center>
+      <h1>DVD</h1>
+    </center>   
+    <div style="text-align:center; float:left; width:66%;">
+      <canvas id="playground" height="500" width="500"> </canvas>
+      <button id="dvd" type="button">DVD</button>
+      <button id="stop" type="button">Stop</button>
+      <button id="clear" type="button">Clear</button>
+    </div>
+    <div style="text-align:center; float:right; width:34%;">
+      <div id="speeds">
+	<h3> Speed </h3>
+	<label for="points">X Speed:</label>
+	<input type="range" name="xSpeed" id="xSpeed" value="3" min="1" max="5" data-highlight="true">
+	<input type="submit" data-inline="true" value="Submit">
+	<br>
+	<label for="points">Y Speed:</label>
+	<input type="range" name="ySpeed" id="ySpeed" value="3" min="1" max="5" data-highlight="true">
+	<input type="submit" data-inline="true" value="Submit">
+      </div>
+      <div id="size">
+	<h3> Size </h3>
+	<label for="points">Width:</label>
+	<input type="range" name="width" id="width" value="75" min="25" max="150" data-highlight="true">
+	<input type="submit" data-inline="true" value="Submit">
+	<br>
+	<label for="points">Height:</label>
+	<input type="range" name="height" id="height" value="75" min="25" max="150" data-highlight="true">
+	<input type="submit" data-inline="true" value="Submit">
+      </div>
+    </div>
   </body>
   <script src="animate.js"> </script>
 </html>
+
