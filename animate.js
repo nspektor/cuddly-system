@@ -51,10 +51,10 @@ var arrayer = []
 var data_table = document.getElementById("info")
 var idnum = document.getElementById("removeID")
 var runAddDVD = function() {
-    var x0 = parseInt(document.getElementById("dx").value);
-    var y0 = parseInt(document.getElementById("dy").value);
-    var sizeX = parseInt(document.getElementById("xsize").value);
-    var sizeY = parseInt(document.getElementById("ysize").value);
+    var x0 = parseFloat(document.getElementById("dx").value);
+    var y0 = parseFloat(document.getElementById("dy").value);
+    var sizeX = parseFloat(document.getElementById("xsize").value);
+    var sizeY = parseFloat(document.getElementById("ysize").value);
     arrayer.push(dvdLogoSetup(x0, y0, sizeX, sizeY));
     var row = data_table.insertRow(-1);
     var row_data = [arrayer.length.toString(), x0.toString(), y0.toString(), sizeX.toString(), sizeY.toString()]
