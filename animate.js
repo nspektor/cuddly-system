@@ -25,20 +25,22 @@ var dvdLogoSetup = function(x0=1, y0=1, sizeX=90, sizeY=60) {
     //Method: Draw and propel the DVD logo 
     var dvdLogo = function() {
 	ctx.clearRect(xcor, ycor, imageX, imageY);
-	if (xcor + dx < 1 + 1 || xcor + imageX + dx > size - 1) {
+	if (xcor + dx < 1 || xcor + imageX + dx > size) {
 	    dx = -dx;
 	}
-	if (ycor + dy < 1 + 1 || ycor + imageY + dy > size - 1) {
+	if (ycor + dy < 1 || ycor + imageY + dy > size) {
 	    dy = -dy;
 	}
 	xcor += dx;
 	ycor += dy;
 	ctx.drawImage(logo, xcor, ycor, imageX, imageY);
-	requestID = window.requestAnimationFrame( dvdLogo );		
+	requestID = window.requestAnimationFrame( dvdLogo );
+	//console.log(requestID);
     };
 
     //Method: Remove this DVD logo
     var removeMe = function() {
+	//console.log("Removing " + requestID);
 	clear();
 	window.cancelAnimationFrame(requestID);
     }
@@ -70,9 +72,10 @@ var runAddDVD = function() {
 
 var remover = function() {
     var removeID = parseInt(document.getElementById("removeID").value);
+    //console.log(removeID);
     if (0 < removeID && removeID <= arrayer.length) {
 	arrayer[removeID - 1].remove();
-	arrayer.pop(removeID - 1);
+	arrayer.splice(removeID - 1, 1);
 	data_table.deleteRow(removeID);
 	for (i = 1; i < data_table.children[0].childElementCount; i++) {
 	    data_table.children[0].children[i].children[0].innerHTML = i.toString();
