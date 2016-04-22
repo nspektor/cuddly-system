@@ -10,30 +10,49 @@
     </center>   
     <div style="text-align:center; float:left; width:66%;">
       <canvas id="playground" height="500" width="500"> </canvas>
-      <button id="dvd" type="button">DVD</button>
-      <button id="stop" type="button">Stop</button>
-      <button id="clear" type="button">Clear</button>
     </div>
     <div style="text-align:center; float:right; width:34%;">
       <div id="speeds">
 	<h3> Speed </h3>
-	<label for="points">X Speed:</label>
-	<input type="range" name="xSpeed" id="xSpeed" value="3" min="1" max="5" data-highlight="true">
-	<input type="submit" data-inline="true" value="Submit">
-	<br>
-	<label for="points">Y Speed:</label>
-	<input type="range" name="ySpeed" id="ySpeed" value="3" min="1" max="5" data-highlight="true">
-	<input type="submit" data-inline="true" value="Submit">
+	<form oninput="dx.value=xSpeed.value; dy.value=ySpeed.value">
+	  <label>X Speed:</label>
+	  <input type="range" name="xSpeed" id="xSpeed" value="1" min="0" max="5" step="0.1" data-highlight="true">
+	  <output id="dx" name="dx" for="xSpeed" data-inline="true">1</output>
+	  <br>
+	  <label for="points">Y Speed:</label>
+	  <input type="range" name="ySpeed" id="ySpeed" value="1" min="0" max="5" step="0.1" data-highlight="true">
+	  <output id="dy" name="dy" for="ySpeed" data-inline="true">1</output>
+	</form>
       </div>
       <div id="size">
 	<h3> Size </h3>
-	<label for="points">Width:</label>
-	<input type="range" name="width" id="width" value="75" min="25" max="150" data-highlight="true">
-	<input type="submit" data-inline="true" value="Submit">
-	<br>
-	<label for="points">Height:</label>
-	<input type="range" name="height" id="height" value="75" min="25" max="150" data-highlight="true">
-	<input type="submit" data-inline="true" value="Submit">
+	<form oninput="xsize.value=width.value; ysize.value=height.value">
+	  <label>Width:</label>
+	  <input type="range" name="width" id="width" value="90" min="25" max="150" step="5" data-highlight="true">
+	  <output id="xsize" name="xsize" for="width" data-inline="true">90</output>
+	  <br>
+	  <label for="points">Height:</label>
+	  <input type="range" name="height" id="height" value="60" min="25" max="150" step="5" data-highlight="true">
+	  <output id="ysize" name="ysize" for="height" data-inline="true">60</output>
+	</form>
+      </div>
+      <br>
+      <div>
+	<input id="submit" type="submit" data-inline="true" value="Create">
+      </div>
+      <br>
+      <div id="data_table">
+	<table id="info" border="1" cellpadding="5" cellspacing="0" width="200px" style="border-collapse:collapse; margin:0 auto;">
+	  <tr> <th>#</th> <th>dx</th> <th>dy</th> <th>Height</th> <th>Width</th> </tr>
+	</table>
+      </div>
+      <br>
+      <div id="removing">
+	  <label> ID Number </label>
+	  <select id="removeID"> </select>
+      </div>
+      <div>
+	<input id="remover" type="submit" data-inline="true" value="Remove">
       </div>
     </div>
   </body>
