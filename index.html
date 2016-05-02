@@ -12,6 +12,16 @@
       <canvas id="playground" height="600" width="600" style="border:1px solid #000000;"> </canvas>
     </div>
     <div style="text-align:center; float:right; width:34%;">
+      <div id="world" style="text-align:left;">
+	<h3 style="text-align:center;"> House Rules </h3>
+	<form oninput="speed.value=limit.value;">
+	<input type="checkbox" name="collide" id="collide"> Ball Collision <br>
+	<input type="checkbox" name="speed_limit" id="speed_limit"> Set Speed Limit
+	Speed Limit: <input type="range" name="limit" id="limit" value="2" min="0" max="50" step="0.1" data-highlight="true">
+	<output id="speed" name="speed" for="limit" data-inline="true">2</output>
+	</form>
+      </div>
+      <br>
       <div id="Properties">
 	<h3> Properties </h3>
 	<form oninput="dx.value=xSpeed.value; 

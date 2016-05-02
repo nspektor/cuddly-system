@@ -133,10 +133,24 @@ var collision = function() {
 
 
 var requestID;
+var collide = document.getElementById("collide");
+var speed_limit = document.getElementById("speed_limit");
+var speed = document.getElementById("speed");
 var drawAll = function() {
     clear();
     arrayer.map(function(ball) { ball.draw(); });
-    collision();
+    if (collide.checked) {
+	collision();
+    }
+    if (speed_limit.checked) {
+	arrayer
+	    .filter(function(ball) {
+		return Math.pow(ball.getDx(), 2) + Math.pow(ball.getDy(), 2) > Math.pow(speed.value, 2);
+	    })
+	    .map(function(ball) {
+		ball.setRGB(255,0,0);
+	    });
+    }
     updateTable();
     requestID = requestAnimationFrame(drawAll);
 }
